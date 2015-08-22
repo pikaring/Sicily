@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<meta http-equiv="imagetoolbar" content="no" />
+<meta name="description" content="" />
+<meta name="keywords" content="" />
+<link rel="stylesheet" href="css/common.css" type="text/css" /> 
+<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+<script src="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.js"></script>
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/common.js"></script>
+<title>I Love Sicily</title>
+</head>
+<body>
+<div id="top">
+<div id="header">
+</div><!-- /#header-->
+<div id="contents">
+<h1>Color of Sicily</h1>
+<form>
+<select id="sicily" size="4">
+	<option value="1" selected>white</option>
+	<option value="2">black</option>
+	<option value="3">red</option>
+	<option value="4">yellow</option>
+</select>
+</form>
+<h1>Color of Local</h1>
+<form>
+<select id="local" size="4">
+	<option value="1" selected>white</option>
+	<option value="2">black</option>
+	<option value="3">red</option>
+	<option value="4">yellow</option>
+</select>
+</form>
+
+</div><!-- /#contents-->
+<div id="footer">
+</div><!-- /#footer-->
+</div><!-- /#top-->
+
+<script>
+
+function saveOptions() {
+	var sicily = parseInt($('#sicily').val());
+	var local = parseInt($('#local').val());
+	var sendValue =[sicily, local];
+<!--alert(sendValue);-->	
+	return sendValue;
+}
+
+$().ready(function() 
+	{
+	$("#b-cancel").click(function() 
+		{
+		console.log("Canceling");
+		document.location = "pebblejs://close";
+	});
+	$("#b-save").click(function() {
+		console.log("Save");
+		var location = "pebblejs://close#" + encodeURIComponent(JSON.stringify(saveOptions()));
+		document.location = location;
+	});
+});
+</script>
+</body>
+</html>
