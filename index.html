@@ -19,8 +19,13 @@
 <div id="header">
 </div><!-- /#header-->
 <div id="contents">
-<h1>Color of Sicily</h1>
+<h1>Celsius/Fahrenheit</h1>
 <form>
+<select id="temp" size="2">
+	<option value="0" selected>&#8451;</option>
+	<option value="1">&#8457;</option>
+</select>
+<h1>Color of Sicily</h1>
 <select id="sicily" size="4">
 	<option value="1" selected>white</option>
 	<option value="2">black</option>
@@ -46,9 +51,10 @@
 <script>
 
 function saveOptions() {
+	var temp = parseInt($('#temp').val());
 	var sicily = parseInt($('#sicily').val());
 	var local = parseInt($('#local').val());
-	var sendValue =[sicily, local];
+	var sendValue =[temp, sicily, local];
 <!--alert(sendValue);-->	
 	return sendValue;
 }
